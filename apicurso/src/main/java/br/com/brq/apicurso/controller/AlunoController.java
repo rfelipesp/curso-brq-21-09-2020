@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.websocket.server.PathParam;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,24 +19,30 @@ public class AlunoController {
 	
 	ArrayList<Aluno> alunos = new ArrayList<Aluno>();
 	
-	@PostMapping(value = "alunos-controller")
-	public void criaAluno(@RequestBody Aluno aluno) {
-		alunos.add(aluno);
+	@PostMapping(value = "alunos")
+	public Aluno criaAluno(@RequestBody Aluno aluno) {
+		this.alunos.add(aluno);
+		return aluno;
 	}
 	
-	@GetMapping(value = "alunos-controller")
+	@GetMapping(value = "alunos")
 	public ArrayList<Aluno> getAlunos() {
-		return alunos;
+		return this.alunos;
 	}
 	
-	@GetMapping(value = "alunos-controller/{id}")
+	@GetMapping(value = "alunos/{id}")
 	public Aluno getAluno (@PathVariable("id") int id) {
-		return alunos.get(id);
+		return this.alunos.get(id);
 	}
 	
-	@PatchMapping(value = "alunos-controller/{id}")
+	@PatchMapping(value = "alunos/{id}")
 	public void update(@RequestBody Aluno aluno, @PathVariable("id") int id) {
-		alunos.set(id, aluno);
+		this.alunos.set(id, aluno);
+	}
+	
+	@DeleteMapping (value = "alunos/{id}")
+	public void delete (@PathVariable("id") int id) {
+		this.alunos.remove(id);
 	}
 	
 
