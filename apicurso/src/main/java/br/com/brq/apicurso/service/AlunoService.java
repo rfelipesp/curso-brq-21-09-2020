@@ -1,6 +1,7 @@
 package br.com.brq.apicurso.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,17 @@ public class AlunoService {
 	public void save(Aluno aluno) {
 		this.alunoRepository.save(aluno);
 	}
-	
+		
 	public Aluno getAluno(int id) {
-		return alunoRepository.findAlunoById(id);
+		return alunoRepository.findById(id).orElse(new Aluno());
 	}
 	
-	public void delete(Aluno aluno) {
-		alunoRepository.delete(aluno);
+	public void delete(int id) {
+		alunoRepository.deleteById(id);
+	}
+	
+	public List<Aluno> getAlunosByName(String nome){
+		return alunoRepository.findByNomeContains(nome);
 	}
 	
 

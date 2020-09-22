@@ -48,8 +48,13 @@ public class AlunoController {
 	}
 	
 	@DeleteMapping (value = "alunos/{id}")
-	public void delete (@RequestBody Aluno aluno, @PathVariable("id") int id) {
-		this.alunoService.delete(aluno);
+	public void delete (@PathVariable("id") int id) {
+		this.alunoService.delete(id);
+	}
+	
+	@GetMapping(value = "alunos/search/{nome}")
+	public List<Aluno> getAlunosByName(@PathVariable String nome){
+		return this.alunoService.getAlunosByName(nome);
 	}
 	
 
