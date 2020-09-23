@@ -1,10 +1,15 @@
 package br.com.brq.apicurso.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,15 +21,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Usuario {
-
+public class Imagem {
+	
 	@Id
-	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "usuario_seq_id" )
-	@SequenceGenerator ( name = "usuario_seq_id", sequenceName = "usuario_seq_id", allocationSize = 1)
+	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "imagem_seq_id" )
+	@SequenceGenerator ( name = "imagem_seq_id", sequenceName = "imagem_seq_id", allocationSize = 1)
 	private int id;
 	
-	private String nome;
-	private String email;
-	private String senha;
+	private String url;
 	
+	@ManyToMany(mappedBy = "imagens")
+	@JsonIgnore
+	private List<Produto> produtos;
+
 }
