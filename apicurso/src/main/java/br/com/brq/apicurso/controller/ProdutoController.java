@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.brq.apicurso.model.Categoria;
+import br.com.brq.apicurso.model.Imagem;
 import br.com.brq.apicurso.model.Produto;
+import br.com.brq.apicurso.repository.CategoriaRepository;
 import br.com.brq.apicurso.service.ProdutoService;
 
 @RestController
@@ -19,6 +22,9 @@ public class ProdutoController {
 	
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 	
 	@PostMapping(value = "produtos")
 	public Produto create(@RequestBody Produto produto) {
@@ -39,6 +45,15 @@ public class ProdutoController {
 	
 	@PatchMapping(value = "produtos/{id}")
 	public void update(@RequestBody Produto produto, @PathVariable("id") int id) {
+		
+		if (produto.getCategoria() != null) {
+			Categoria c = this.categoriaRepository
+					.findById( produto.getCategoria().getId() )
+					.orElse( this.categoriaRepository.save( produto.getCategoria() )  );
+			
+			produto.setCategoria(c);
+		}
+		
 		this.produtoService.save(produto);
 	}
 	
