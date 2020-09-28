@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlunoListComponent } from './aluno-list/aluno-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -10,7 +11,8 @@ import { AlunoListComponent } from './aluno-list/aluno-list.component';
     AlunoListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports : [AlunoListComponent]
 })
