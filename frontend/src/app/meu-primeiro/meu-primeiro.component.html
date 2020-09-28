@@ -1,0 +1,40 @@
+
+<p>meu-primeiro works!</p>
+
+{{ titulo }}
+<br>
+
+{{ curso }}
+<br>
+
+{{ getNome() }}
+<br>
+
+<input value="{{ titulo }}" />
+<br>
+<br>
+
+<input [value]="titulo" />
+<br>
+<br>
+
+
+<input #tituloInput [value]="titulo"
+        (keyup)="onInput(titulo)" />
+<br>
+<br>
+
+<input [(ngModel)] = "titulo" />
+
+<br>
+<br>
+
+<button [class]="getClass()" [class.btn]="isDisable()"
+        (click)="onButtonClick()">Meu Botão</button>
+
+
+
+
+
+
+
