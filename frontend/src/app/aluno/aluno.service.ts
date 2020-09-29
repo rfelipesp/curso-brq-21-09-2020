@@ -17,4 +17,8 @@ export class AlunoService {
     return this.httpClient.get('http://127.0.0.1:8081/alunos');
   }
 
+  getOneAluno(id:number){
+    return this.httpClient.get('http://127.0.0.1:8081/alunos/' + id);
+  }
+
 }

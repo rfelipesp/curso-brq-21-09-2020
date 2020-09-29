@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AlunoService } from '../aluno.service';
 
 @Component({
@@ -8,12 +9,34 @@ import { AlunoService } from '../aluno.service';
 })
 export class AlunoListComponent implements OnInit {
 
-  constructor(private alunoService : AlunoService) { }
+  public alunos   : any;
+  private aluno   : any;
+  public alunoId  : number;
 
-  public alunos : any;
+  constructor(private alunoService : AlunoService, private activatedRoute : ActivatedRoute) { 
+    console.log(this.activatedRoute);
+
+    this.activatedRoute.params.subscribe(
+      (parametros) => {
+        console.log(parametros);
+
+        if(parametros.id){
+          this.alunoId = parametros.id;
+
+          this.alunoService.getOneAluno(this.alunoId)
+          .subscribe( (resultado : any) => {
+            this.aluno = resultado;
+          },
+            (error) => {
+              alert('Erro ao consultar o aluno');
+            }
+          )
+        }
+      }
+    );
+  }
 
   ngOnInit(): void {
-    //this.getAlunos()
     // Quando a aplicação é iniciado ela passa por aqui
   }
 

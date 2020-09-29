@@ -6,7 +6,9 @@ import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 const routes: Routes = [
   { path : '' , component : MeuPrimeiroComponent },
   { path : 'home' , component : MeuPrimeiroComponent },
-  { path : 'alunos' , component : AlunoListComponent }
+  { path : 'alunos' , component : AlunoListComponent },
+
+  { path : 'alunos/:id' , component : AlunoListComponent}
 ];
 
 @NgModule({
