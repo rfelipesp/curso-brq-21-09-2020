@@ -13,7 +13,7 @@ export class AlunoListComponent implements OnInit {
   public alunos : any;
 
   ngOnInit(): void {
-    this.getAlunos();
+    //this.getAlunos()
     // Quando a aplicação é iniciado ela passa por aqui
   }
 
@@ -26,7 +26,11 @@ export class AlunoListComponent implements OnInit {
       .subscribe( (resultado) => {
         console.log(resultado);
         this.alunos = resultado;
-      } );
+      },
+      (error) => {
+        console.log(error);
+      }
+      );
   }
 
 }
