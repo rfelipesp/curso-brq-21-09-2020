@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlunoModule } from './aluno/aluno.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { FormsRoutingModule } from './forms/forms-routing.module';
+import { FormularioModule } from './formulario/formulario.module';
+
+
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FormsRoutingModule } from './forms/forms-routing.module';
     AppRoutingModule,
     FormsModule,
     AlunoModule,
-    FormsRoutingModule
+    FormularioModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

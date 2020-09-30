@@ -1,0 +1,24 @@
+<form class="mt-5" [formGroup]="meuForm" (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Digite o nome do aluno">
+    </div>
+    <app-mostrar-erros [isError]="isErrorField( 'nome' )" [mensagem]="'Nome obrigatório'" ></app-mostrar-erros>
+    
+    <div class="form-group">
+      <label for="ra">RA</label>
+      <input type="text" class="form-control" formControlName="ra" id="ra" placeholder="Digite o RA do aluno">
+    </div>
+    <app-mostrar-erros [isError]="isErrorField( 'ra' )" [mensagem]="'RA obrigatório'" ></app-mostrar-erros>
+
+    <div class="form-group">
+      <label for="curso">Curso</label>
+      <input type="text" class="form-control" formControlName="curso" id="curso" placeholder="Digite o curso do aluno">
+    </div>
+    <app-mostrar-erros [isError]="isErrorField( 'curso' )" [mensagem]="'Curso obrigatório'" ></app-mostrar-erros>
+
+   
+    <button type="submit" class="btn btn-primary">Enviar</button>
+
+  </form>
+

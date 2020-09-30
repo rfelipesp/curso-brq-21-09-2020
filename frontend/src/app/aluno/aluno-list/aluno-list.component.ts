@@ -10,7 +10,7 @@ import { AlunoService } from '../aluno.service';
 export class AlunoListComponent implements OnInit {
 
   public alunos   : any;
-  private aluno   : any;
+  public aluno   : any;
   public alunoId  : number;
 
   constructor(private alunoService : AlunoService, private activatedRoute : ActivatedRoute) { 
@@ -26,6 +26,7 @@ export class AlunoListComponent implements OnInit {
           this.alunoService.getOneAluno(this.alunoId)
           .subscribe( (resultado : any) => {
             this.aluno = resultado;
+            console.log(this.aluno);
           },
             (error) => {
               alert('Erro ao consultar o aluno');
