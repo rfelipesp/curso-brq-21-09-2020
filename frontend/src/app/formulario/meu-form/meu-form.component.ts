@@ -11,8 +11,9 @@ import { FormularioService } from '../formulario.service';
 export class MeuFormComponent implements OnInit {
 
 public meuForm : FormGroup;
+public contador : number = 0;
 
-  constructor(private formBuilder : FormBuilder, private formularioService : FormularioService) { 
+  constructor(private formBuilder : FormBuilder, private formularioService : FormularioService) {
     this.meuForm = this.formBuilder.group( {
         nome  : [ '', [ Validators.required ] ],
         ra    : [ '', [ Validators.required, Validators.maxLength(5) ] ],
@@ -26,7 +27,7 @@ public meuForm : FormGroup;
   onSubmit(){
 
     console.log(this.meuForm);
-   
+
     this.formularioService.postAluno(this.meuForm.value)
       .subscribe( (resultado : any) => {
         this.meuForm = resultado;
@@ -35,11 +36,16 @@ public meuForm : FormGroup;
           alert('Erro ao consultar o aluno');
         }
       )
-  
+
   }
 
   public isErrorField(fieldName){
     return ( this.meuForm.get( fieldName ).valid == false && this.meuForm.get( fieldName ).touched == true );
+  }
+
+  public receberNotificacao(event){
+    this.contador++;
+    console.log(event);
   }
 
 }

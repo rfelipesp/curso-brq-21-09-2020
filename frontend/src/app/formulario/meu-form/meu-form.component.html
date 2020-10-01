@@ -3,21 +3,40 @@
       <label for="nome">Nome</label>
       <input type="text" class="form-control" formControlName="nome" id="nome" placeholder="Digite o nome do aluno">
     </div>
-    <app-mostrar-erros [isError]="isErrorField( 'nome' )" [mensagem]="'Nome obrigatório'" ></app-mostrar-erros>
-    
+    <app-mostrar-erros
+      [isError]="isErrorField( 'nome' )" [mensagem]="'Nome obrigatório'"
+      (notificador)="receberNotificacao($event)"
+    ></app-mostrar-erros>
+
+    Valid: {{ meuForm.controls.nome.valid }}
+
     <div class="form-group">
       <label for="ra">RA</label>
       <input type="text" class="form-control" formControlName="ra" id="ra" placeholder="Digite o RA do aluno">
     </div>
-    <app-mostrar-erros [isError]="isErrorField( 'ra' )" [mensagem]="'RA obrigatório'" ></app-mostrar-erros>
+    <app-mostrar-erros
+      [isError]="isErrorField( 'ra' )" [mensagem]="'RA obrigatório'"
+      (notificador)="receberNotificacao($event)"
+    ></app-mostrar-erros>
 
     <div class="form-group">
       <label for="curso">Curso</label>
       <input type="text" class="form-control" formControlName="curso" id="curso" placeholder="Digite o curso do aluno">
     </div>
-    <app-mostrar-erros [isError]="isErrorField( 'curso' )" [mensagem]="'Curso obrigatório'" ></app-mostrar-erros>
+    <app-mostrar-erros
+     [isError]="isErrorField( 'curso' )" [mensagem]="'Curso obrigatório'"
+     (notificador)="receberNotificacao($event)"
+    ></app-mostrar-erros>
 
-   
+    <div>
+      Contador = {{ contador }}
+    </div>
+
+
+    <br>
+    <br>
+
+
     <button type="submit" class="btn btn-primary">Enviar</button>
 
   </form>

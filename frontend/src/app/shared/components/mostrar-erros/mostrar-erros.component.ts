@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-mostrar-erros',
@@ -10,9 +10,15 @@ export class MostrarErrosComponent implements OnInit {
   @Input() public isError : boolean = false;
   @Input() public mensagem : string;
 
+  @Output() public notificador = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onDivClick(){
+    return this.notificador.emit(true);
   }
 
 }
