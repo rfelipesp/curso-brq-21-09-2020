@@ -24,28 +24,28 @@ public contador : number = 0;
   ngOnInit(): void {
   }
 
-  onSubmit(){
+  // onSubmit(){
 
-    console.log(this.meuForm);
+  //   console.log(this.meuForm);
 
-    this.formularioService.postAluno(this.meuForm.value)
-      .subscribe( (resultado : any) => {
-        this.meuForm = resultado;
-      },
-        (error) => {
-          alert('Erro ao consultar o aluno');
-        }
-      )
+  //   this.formularioService.postAluno(this.meuForm.value)
+  //     .subscribe( (resultado : any) => {
+  //       this.meuForm = resultado;
+  //     },
+  //       (error) => {
+  //         alert('Erro ao consultar o aluno');
+  //       }
+  //     )
 
-  }
+  // }
 
-  public isErrorField(fieldName){
-    return ( this.meuForm.get( fieldName ).valid == false && this.meuForm.get( fieldName ).touched == true );
-  }
+  // public isErrorField(fieldName){
+  //   return ( this.meuForm.get( fieldName ).valid == false && this.meuForm.get( fieldName ).touched == true );
+  // }
 
-  public receberNotificacao(event){
-    this.contador++;
-    console.log(event);
-  }
+  // public receberNotificacao(event){
+  //   this.contador++;
+  //   console.log(event);
+  // }
 
 }

@@ -1,8 +1,8 @@
-<button type="button" class="btn btn-success mt-5" (click)="getAlunos()">
-    Consultar Alunos
+
+<button type="button" class="btn btn-success mt-5 mb-5" [routerLink]="['/alunos/form']">
+    Cadastrar Alunos
 </button>
-<br>
-<br>
+
 
 <table class="table" *ngIf="alunos != null">
     <tr>
@@ -10,6 +10,7 @@
         <th>nome:</th>
         <th>ra:</th>
         <th>curso:</th>
+        <th class="justify-content-center">Operações</th>
     </tr>
     <!--<tr *ngFor="let alun of alunos?"></tr>-->
     <!--O operador Elvis só pode ser usado com objeto-->
@@ -18,15 +19,23 @@
         <td>{{alun.nome}}</td>
         <td>{{alun.ra}}</td>
         <td>{{alun.curso}}</td>
+        <td>
+          <button type="button" class="btn btn btn-success mr-2" [routerLink]="['/alunos/form', alun?.id]" >
+            Editar
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onDelete(alun?.id)">
+            Deletar
+          </button>
+        </td>
     </tr>
 </table>
 <br>
 <br>
-<div class="card" style="width: 18rem;" *ngIf="aluno?.id>0">
+<!-- <div class="card" style="width: 18rem;" *ngIf="aluno?.id>0">
     <div class="card-body">
         <h5 class="card-title">Aluno {{ aluno?.id }} </h5>
 
         <p class="card-text"> Nome : {{ aluno?.nome }} </p>
         <p class="card-text"> RA : {{ aluno?.ra }} </p>
     </div>
-</div>
+</div> -->

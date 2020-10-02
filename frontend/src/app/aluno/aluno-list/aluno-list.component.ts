@@ -13,32 +13,10 @@ export class AlunoListComponent implements OnInit {
   public aluno   : any;
   public alunoId  : number;
 
-  constructor(private alunoService : AlunoService, private activatedRoute : ActivatedRoute) { 
-    console.log(this.activatedRoute);
-
-    this.activatedRoute.params.subscribe(
-      (parametros) => {
-        console.log(parametros);
-
-        if(parametros.id){
-          this.alunoId = parametros.id;
-
-          this.alunoService.getOneAluno(this.alunoId)
-          .subscribe( (resultado : any) => {
-            this.aluno = resultado;
-            console.log(this.aluno);
-          },
-            (error) => {
-              alert('Erro ao consultar o aluno');
-            }
-          )
-        }
-      }
-    );
-  }
+  constructor(private alunoService : AlunoService) { }
 
   ngOnInit(): void {
-    // Quando a aplicação é iniciado ela passa por aqui
+    this.getAlunos();
   }
 
   meuEvento(){
@@ -55,6 +33,18 @@ export class AlunoListComponent implements OnInit {
         console.log(error);
       }
       );
+  }
+
+  public onDelete(id){
+    this.alunoService.deleteAluno(id)
+    .subscribe(
+      (dados)=>{
+        console.log(dados);
+        alert('Aluno excluído com sucesso!');
+        this.getAlunos();
+
+      }
+    );
   }
 
 }
