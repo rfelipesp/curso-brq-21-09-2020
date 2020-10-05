@@ -1,0 +1,29 @@
+
+<button type="button" class="btn btn-success mt-5 mb-5" [routerLink]="['/categorias/form']">
+  Cadastrar categorias
+</button>
+
+
+<table class="table" *ngIf="categorias != null">
+  <tr>
+      <th>Id:</th>
+      <th>nome:</th>
+      <th>descrição:</th>
+      <th class="justify-content-center">Operações</th>
+  </tr>
+  <!--<tr *ngFor="let cat of categorias?"></tr>-->
+  <!--O operador Elvis só pode ser usado com objeto-->
+  <tr *ngFor="let cat of categorias">
+      <td>{{cat.id}}</td>
+      <td>{{cat.nome}}</td>
+      <td>{{cat.descricao}}</td>
+      <td>
+        <button type="button" class="btn btn btn-success mr-2" [routerLink]="['/categorias/form', cat?.id]" >
+          Editar
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onDelete(cat?.id)">
+          Deletar
+        </button>
+      </td>
+  </tr>
+</table>

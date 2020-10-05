@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunoListComponent } from './aluno-list/aluno-list.component';
+
+import { CategoriaRoutingModule } from './categoria-routing.module';
+import { CategoriasComponent } from './categorias/categorias.component';
+import { CategoriaFormComponent } from './categoria-form/categoria-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlunoRoutingModule } from './aluno-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
-  declarations: [
-    AlunoListComponent,
-    AlunoFormComponent
-  ],
+  declarations: [CategoriasComponent, CategoriaFormComponent],
   imports: [
+    CommonModule,
+    CategoriaRoutingModule,
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AlunoRoutingModule,
     SharedModule,
     ToastrModule.forRoot()
   ],
-  exports : [AlunoListComponent]
+  exports : [CategoriasComponent]
 })
-export class AlunoModule { }
+export class CategoriaModule { }

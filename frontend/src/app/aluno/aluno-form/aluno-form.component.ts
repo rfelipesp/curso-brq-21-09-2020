@@ -45,7 +45,6 @@ export class AlunoFormComponent implements OnInit {
               this.getOneAluno(parametros.id);
               this.idAluno = parametros.id;
           }
-
         }
       );
   }

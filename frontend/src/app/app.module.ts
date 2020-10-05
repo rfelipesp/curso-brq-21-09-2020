@@ -11,6 +11,7 @@ import { FormularioModule } from './formulario/formulario.module';
 import { CicloComponent } from './formulario/ciclo/ciclo.component';
 import { AlunoRoutingModule } from './aluno/aluno-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoriaModule } from './categoria/categoria.module';
 
 
 
@@ -30,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AlunoRoutingModule,
     FormularioModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CategoriaModule
 
   ],
   providers: [],
