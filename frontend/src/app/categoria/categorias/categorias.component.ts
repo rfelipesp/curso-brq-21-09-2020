@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria } from '../model/categoria';
+import { CategoriaPagination } from '../model/categoria-pagination';
 import { CategoriaService } from './categoria.service';
 
 @Component({
@@ -9,14 +9,21 @@ import { CategoriaService } from './categoria.service';
 })
 export class CategoriasComponent implements OnInit {
 
-  public categorias   : any;
-  public categoria   : Categoria[];
-  public categoriaId  : number;
+  //public categorias   : Categoria[] = [];
+  public paginacao      : CategoriaPagination;
+
+  public pagina         : number = 0;
+  public linhas         : number = 2;
+
+  public totalElements  : number = 0;
+  public totalPages     : number = 0;
+  public busca          : string = "";
 
   constructor(private categoriaService : CategoriaService) { }
 
   ngOnInit(): void {
-    this.getCategorias();
+    //this.getCategorias();
+    this.getCatPagination();
   }
 
   meuEvento(){
@@ -24,15 +31,15 @@ export class CategoriasComponent implements OnInit {
   }
 
   getCategorias(){
-    this.categoriaService.getAllCategorias()
-      .subscribe( (resultado) => {
-        console.log(resultado);
-        this.categorias = resultado;
-      },
-      (error) => {
-        console.log(error);
-      }
-      );
+    // this.categoriaService.getAllCategorias()
+    //   .subscribe( (resultado) => {
+    //     console.log(resultado);
+    //     this.categorias = resultado;
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    //   );
   }
 
   public onDelete(id){
@@ -45,6 +52,40 @@ export class CategoriasComponent implements OnInit {
 
       }
     );
+  }
+
+  public getCatPagination(){
+    this.categoriaService.getPagination(this.pagina, this.linhas, this.busca)
+    .subscribe(
+      (response : any)=>{
+        this.paginacao = response;
+        this.totalElements = response.totalElements;
+        this.totalPages = response.totalPages;
+      }
+    );
+  }
+
+  public nextPage(){
+    this.pagina == ( this.totalPages - 1 ) ? this.pagina : this.pagina++;
+    this.getCatPagination();
+  }
+
+  public previousPage(){
+    this.pagina == 0 ? this.pagina = 0 : this.pagina--;
+    this.getCatPagination();
+  }
+
+  public setPage(page : number){
+    this.pagina = page;
+    this.getCatPagination();
+  }
+
+  public onLinhaChange(){
+    this.getCatPagination();
+  }
+
+  public onSearch(){
+    this.getCatPagination();
   }
 
 

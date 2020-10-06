@@ -15,12 +15,8 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     CommonModule,
     CategoriaRoutingModule,
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule,
-    ToastrModule.forRoot()
+    SharedModule
+
   ],
   exports : [CategoriasComponent]
 })

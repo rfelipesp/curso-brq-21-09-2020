@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Categoria } from '../model/categoria';
+import { CategoriaPagination } from '../model/categoria-pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CategoriaService {
   }
 
   getAllCategorias(){
-    return this.httpClient.get<Categoria[]>(this.urlApi);
+    return this.httpClient.get<Categoria[]>(`${this.urlApi}`);
   }
 
   getOneCategoria(id:number){
@@ -35,6 +36,10 @@ export class CategoriaService {
 
   public deleteCategoria(id){
     return this.httpClient.delete(`${this.urlApi}/${id}`);
+  }
+
+  public getPagination(pagina : number, linhas : number, busca : string){
+    return this.httpClient.get<CategoriaPagination[]>(`${this.urlApi}/paginador?pagina=${pagina}&linhas=${linhas}&busca=${busca}`);
   }
 
 
