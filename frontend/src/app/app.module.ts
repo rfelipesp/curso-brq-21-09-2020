@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MeuPrimeiroComponent } from './meu-primeiro/meu-primeiro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlunoModule } from './aluno/aluno.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { FormularioModule } from './formulario/formulario.module';
 import { CicloComponent } from './formulario/ciclo/ciclo.component';
-import { AlunoRoutingModule } from './aluno/aluno-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CategoriaModule } from './categoria/categoria.module';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,12 +25,9 @@ import { CategoriaModule } from './categoria/categoria.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AlunoModule,
-    AlunoRoutingModule,
-    FormularioModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    CategoriaModule
+    ToastrModule,
+    HttpClientModule
 
   ],
   providers: [],

@@ -4,8 +4,8 @@ import { CicloComponent } from './ciclo/ciclo.component';
 import { MeuFormComponent } from './meu-form/meu-form.component';
 
 const routes: Routes = [
-  { path : 'formulario/meu-form' , component : MeuFormComponent },
-  { path : 'formulario/ciclo' , component : CicloComponent }
+  { path : 'meu-form' , component : MeuFormComponent },
+  { path : 'ciclo' , component : CicloComponent }
 ];
 
 @NgModule({

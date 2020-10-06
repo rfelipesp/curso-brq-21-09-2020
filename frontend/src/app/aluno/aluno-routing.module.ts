@@ -5,10 +5,9 @@ import { AlunoListComponent } from './aluno-list/aluno-list.component';
 
 
 const routes: Routes = [
-  { path : 'alunos' , component : AlunoListComponent },
-  { path : 'alunos/form' , component : AlunoFormComponent },
-  { path : 'alunos/form/:id' , component : AlunoFormComponent },
-  { path : 'alunos/:id' , component : AlunoListComponent }
+  { path : '' , component : AlunoListComponent },
+  { path : 'form' , component : AlunoFormComponent },
+  { path : 'form/:id' , component : AlunoFormComponent }
 
 ];
 
