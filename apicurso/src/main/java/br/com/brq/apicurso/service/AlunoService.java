@@ -43,5 +43,17 @@ public class AlunoService {
 		return this.alunoRepository.findAll(pageRequest);
 	}
 	
+	
+	public Aluno update(int id, Aluno aluno) {
+		
+		Aluno update = new Aluno();
+		
+		update.setNome(aluno.getNome());
+		update.setRa(aluno.getRa());
+		update.setCurso(aluno.getCurso());
+		
+		return aluno;
+	}
+	
 
 }

@@ -10,6 +10,7 @@ import { CicloComponent } from './formulario/ciclo/ciclo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { CpfPipe } from './shared/pipes/cpf.pipe';
 
 
 

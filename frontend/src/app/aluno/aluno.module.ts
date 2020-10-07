@@ -4,6 +4,7 @@ import { AlunoListComponent } from './aluno-list/aluno-list.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { AlunoRoutingModule } from './aluno-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AlunoRoutingModule,
     SharedModule,
+    ToastrModule.forRoot()
 
   ],
   exports : [AlunoListComponent]
