@@ -1,0 +1,27 @@
+<form class="mt-5 row justify-content-center" [formGroup]="authForm" (submit)="onSubmit()">
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" formControlName="email" id="email" placeholder="Digite seu email">
+    </div>
+    <app-mostrar-erros
+      [isError]="isErrorField( 'email' )" [mensagem]="'Email obrigatório'"
+    ></app-mostrar-erros>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <input type="text" class="form-control" formControlName="senha" id="senha" placeholder="Digite sua senha">
+    </div>
+    <app-mostrar-erros
+      [isError]="isErrorField( 'senha' )" [mensagem]="'Senha obrigatória'"
+    ></app-mostrar-erros>
+
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+
+</form>
+
+
