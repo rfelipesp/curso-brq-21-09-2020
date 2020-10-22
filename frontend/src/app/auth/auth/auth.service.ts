@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthToken } from '../model/auth-token';
 
@@ -9,14 +10,19 @@ import { AuthToken } from '../model/auth-token';
 })
 export class AuthService {
 
-  urlApi = `${environment.urlApi}/autenticacao`;
+  url : string = `${environment.urlApi}/autenticacao`;
+  public authSubject = new Subject<boolean>();
 
   // Http é um serviço
   constructor(private httpClient : HttpClient) { }
 
 
-  doAuth(auth : any){
-    return this.httpClient.post<AuthToken>(`${this.urlApi}`, auth);
+  doAuth( credential : Credential){
+    return this.httpClient.post<AuthToken>( this.url, credential);
+  }
+
+  public sendMessage(msg : boolean){
+    this.authSubject.next(msg);
   }
 
 

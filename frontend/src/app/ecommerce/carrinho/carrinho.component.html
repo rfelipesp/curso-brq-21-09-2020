@@ -1,0 +1,82 @@
+<h2 class="text-center m-4">Meu Carrinho</h2>
+
+<div *ngIf="itensCarrinho.length; else carrinhoVazio">
+
+    <div class="container-fluid">
+
+        <div class="row ">
+            <div  class="col-sm-8">
+                <div class="row text-center">
+                  <h6 class="col-sm" >Produto</h6>
+                  <h6 class="col-sm" style="margin-left: 60px;" >Quantidade</h6>
+                  <h6 class="col-sm">Preço</h6>
+                </div>
+                <ul  class="lista" style="list-style: none;">
+                    <li *ngFor = "let it of itensCarrinho" class="border">
+                    <div class="row">
+
+                        <div class="col-sm-4  mt-2 text-center">
+                            <div class="col-sm-6 m-auto">
+                              <!-- <img [src]="it?.produto.imagens[0].imagemProduto"> -->
+                              <img class="img-fluid" width="100" src="assets/img/produtos/racao-premier.png" alt="">
+                            </div>
+                            <p>{{ it.produto.nome }}</p>
+                        </div>
+
+                        <div class="col-sm-2 text-center m-auto">
+                            <select value="{{it.quantidade}}" (change)="changeSuit($event.target.value,it.produto.id)">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+
+                            <div class="mt-sm-2">
+                              <a (click)="removeItem(it.produto.id)">Remover</a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-2 m-auto text-center">
+                            <p>{{it.produto.preco * it.quantidade | currency:'BRL':'symbol':'2.2-2'}}</p>
+                        </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Resumo do pedido</h5>
+                      <div class="d-flex justify-content-between">
+                        <div><span>Produtos</span></div>
+                        <p class="card-text">{{ totalCarrinho }} {{ calcCarrinho | currency:'BRL':'symbol':'2.2-2' }}</p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <div><span>Frete</span></div>
+                        <p class="card-text">{{ frete | currency:'BRL':'symbol':'1.2-2' }}</p>
+                      </div>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <div><span>TOTAL</span></div>
+                        <p>{{ valotTotal | currency:'BRL':'symbol':'1.2-2' }}</p>
+                      </div>
+
+                      <button [routerLink]="['/ecommerce/finalizar']" routerLinkActive="router-link-active"   class="btn btn-primary">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #carrinhoVazio>
+    <div id="sombra1"
+        class="form-row d-flex justify-content-center">
+       <p style="font-size: 17px;">Seu Carrinho está vazio!</p>
+    </div>
+</ng-template>

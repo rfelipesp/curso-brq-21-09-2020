@@ -18,14 +18,15 @@ export class HttpAuthInterceptorService implements HttpInterceptor {
 
     let token = this.storage.getLocalUser()?.token;
 
-    req = req.clone (
-      {
-        setHeaders : {
-          Authorization : 'Bearer ' + token
+    if(req.url.includes('viacep') == false){
+      req = req.clone (
+        {
+          setHeaders : {
+            Authorization : 'Bearer ' + token
+          }
         }
-      }
-    );
-
+      );
+    }
     return next.handle(req);
 
   }

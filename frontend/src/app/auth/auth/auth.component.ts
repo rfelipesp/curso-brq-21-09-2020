@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ToastrService } from 'ngx-toastr';
-import { Usuario } from 'src/app/shared/model/usuario';
+import { Usuario } from 'src/app/shared/models/usuario';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { AuthService } from './auth.service';
 
@@ -18,6 +17,7 @@ export class AuthComponent implements OnInit {
   public email : string;
   public senha : string;
   public authForm : FormGroup;
+  private loginUser : Usuario;
 
   constructor(
 
@@ -52,13 +52,18 @@ export class AuthComponent implements OnInit {
         const decodedToken = helper.decodeToken(success.token);
 
         let localUser : Usuario = {
-          token : success.token,
-          nome  : decodedToken.nome,
-          email : decodedToken.email
+          token   : success.token,
+          nome    : decodedToken.nome,
+          email   : decodedToken.sub,
+          id      : decodedToken.id,
+          scopes  : decodedToken.scopes
         }
 
+        this.loginUser = localUser;
+
         this.storage.setLocalUser(localUser);
-        this.router.navigate(['/home']);
+        this.authService.sendMessage(true);
+        this.router.navigate(['home']);
 
       }
       )

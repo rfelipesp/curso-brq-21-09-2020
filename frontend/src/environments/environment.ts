@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  urlApi : 'http://localhost:8081'
+  urlApi : 'http://localhost:8081',
+  storageKeysConfig : {
+    localUser: 'localUser',
+    carrinho:'carrinho',
+    endereco:'endereco'
+  }
 };
 
 /*
