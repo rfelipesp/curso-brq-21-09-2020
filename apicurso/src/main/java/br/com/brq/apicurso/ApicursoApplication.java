@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.brq.apicurso.model.Categoria;
+import br.com.brq.apicurso.model.Endereco;
 import br.com.brq.apicurso.model.Imagem;
 import br.com.brq.apicurso.model.Produto;
 import br.com.brq.apicurso.model.Usuario;
+import br.com.brq.apicurso.model.enums.Perfil;
 import br.com.brq.apicurso.repository.CategoriaRepository;
+import br.com.brq.apicurso.repository.EnderecoRepository;
 import br.com.brq.apicurso.repository.ImagemRepository;
 import br.com.brq.apicurso.repository.ProdutoRepository;
 import br.com.brq.apicurso.repository.UsuarioRepository;
@@ -23,6 +27,9 @@ public class ApicursoApplication implements CommandLineRunner {
 	private UsuarioRepository usuarioRepository;
 	
 	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
 	@Autowired
@@ -30,6 +37,9 @@ public class ApicursoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ImagemRepository imagemRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder; 
 	
 	
 
@@ -41,11 +51,38 @@ public class ApicursoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 //		Usuario usuario = Usuario.builder()
-//							.nome("Agamenon Rodrigues")
-//							.email("agamenon@gmail.com")
-//							.senha("senha123")
+//				.nome("Jose da Silva")
+//				.email("jose@gmail.com")
+//				.senha( this.bCryptPasswordEncoder.encode("123456") )
+//				.endereco(endereco)
+//				.build();
+//
+//
+//		usuario.addperfil(Perfil.ADMIN);
+//		usuario.addperfil(Perfil.CLIENTE);
+//		usuario = this.usuarioRepository.save(usuario);
+		
+//		Endereco endereco = Endereco.builder()
+//							.logradouro("Av. Interlagos")
+//							.numero("5699")
+//							.complemento("Apto 54 Bloco 2")
+//							.bairro("Interlagos")
+//							.cidade("São Paulo")
+//							.estado("São Paulo")
 //							.build();
 //		
+//		endereco = this.enderecoRepository.save(endereco);
+//		
+//		Usuario usuario = Usuario.builder()
+//							.nome("Agamenon Rodrigues")
+//							.email("agamenon@gmail.com")
+//							.senha( this.bCryptPasswordEncoder.encode("123456") )
+//							.endereco(endereco)
+//							.build();
+//		
+//		
+//		usuario.addperfil(Perfil.ADMIN);
+//		usuario.addperfil(Perfil.CLIENTE);
 //		usuario = this.usuarioRepository.save(usuario);
 		
 //		Categoria categoria = Categoria.builder()

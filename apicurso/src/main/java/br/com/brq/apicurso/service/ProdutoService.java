@@ -34,14 +34,17 @@ public class ProdutoService {
 		produtoRepository.deleteById(id);
 	}
 	
-	public List<Produto> getProdutosByName(String nome){
-		return produtoRepository.findByNomeContains(nome);
+	
+	public Page<Produto> paginacao(int pagina, int linhas, String busca){
+		PageRequest pageRequest = PageRequest.of(pagina, linhas);
+		return this.produtoRepository.findByNomeContainsIgnoreCase(busca, pageRequest);
 	}
 	
-	public Page<Produto> paginacao(int pagina, int linhas){
+	public Page<Produto> getProdutosByCategoria(int pagina, int linhas, String busca){
 		PageRequest pageRequest = PageRequest.of(pagina, linhas);
-		return this.produtoRepository.findAll(pageRequest);
+		return this.produtoRepository.findByCategoriaNomeContainsIgnoreCase(busca, pageRequest);
 	}
+
 	
 
 }
